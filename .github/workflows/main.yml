@@ -13,5 +13,9 @@ jobs:
           python-version: "3.9"
       - name: Install dependencies
         run: pip install -r requirements.txt
-      - name: Run tests
-        run: python manage.py test
+      - name: Run Git Bisect
+        env:
+          BAD_COMMIT: "bad-hash-goes-here"  # Remplacez par le hash du commit mauvais
+          GOOD_COMMIT: "good-hash-goes-here"  # Remplacez par le hash du commit bon
+        run: |
+          python myscript.py $BAD_COMMIT $GOOD_COMMIT
